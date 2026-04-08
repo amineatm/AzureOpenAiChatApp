@@ -1,0 +1,50 @@
+<div class="chat-wrapper">
+  <div class="chat-header">Chat</div>
+
+  <div #messagesContainer class="chat-messages">
+    @for (msg of messages; track $index) {
+      <div class="msg-row" [ngClass]="msg.from">
+        <div class="msg-bubble" [ngClass]="msg.from">
+          @if (msg.from === 'ai') {
+            <div class="ai-header">
+              <img src="amine.png" class="ai-avatar" alt="" />
+              <span class="ai-name">Amine</span>
+            </div>
+          }
+
+          @for (block of splitMessage(msg.text); track $index) {
+            @if (block.type === 'text') {
+              <div class="msg-text-pre">{{ block.content }}</div>
+            }
+            @if (block.type === 'code') {
+              <pre [ngClass]="'language-' + block.lang">
+                <code>{{ block.content }}</code>
+              </pre>
+            }
+          }
+
+          <div class="msg-meta">
+            {{ msg.createdAt | date: 'short' }}
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="chat-input-bar">
+    <div class="composer-surface">
+      <input
+        [(ngModel)]="input"
+        (keyup.enter)="send()"
+        placeholder="Ask me anything…"
+        type="text"
+        autocomplete="off"
+      />
+      <button type="button" class="composer-send" (click)="send()" aria-label="Send message">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3 20.59L21 12 3 3.41V10l12 2-12 2v6.59z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

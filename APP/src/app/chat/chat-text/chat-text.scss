@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.chat-messages {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--text-light) 30%, transparent) transparent;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--text-light) 35%, transparent);
+  border-radius: 6px;
+}
+
+.msg-bubble.ai pre {
+  margin-top: 0.35rem;
+}

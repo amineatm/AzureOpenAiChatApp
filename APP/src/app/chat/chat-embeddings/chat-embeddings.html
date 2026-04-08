@@ -1,0 +1,62 @@
+<div class="chat-wrapper">
+  <div class="chat-header">Embeddings</div>
+
+  <div #messagesContainer class="chat-messages">
+    @for (msg of messages; track $index) {
+      <div class="msg-row" [ngClass]="msg.from">
+        <div class="msg-bubble" [ngClass]="msg.from">
+
+          @if (msg.from === 'ai') {
+            <div class="ai-header">
+              <img src="amine.png" class="ai-avatar" alt="" />
+              <span class="ai-name">Amine</span>
+            </div>
+          }
+
+          @if (msg.from === 'loading') {
+            <div class="typing-indicator" aria-label="Loading">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          } @else {
+            <div class="msg-text-pre">{{ msg.text }}</div>
+          }
+
+          @if (msg.from !== 'loading') {
+            <div class="msg-meta">
+              {{ msg.createdAt | date: 'short' }}
+            </div>
+          }
+
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="chat-input-bar">
+    <button type="button" class="embed-circle-btn" (click)="openUploadModal()">
+        <svg class="embed-circle-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M16.5 6.5L9 14c-1.2 1.2-1.2 3.1 0 4.3s3.1 1.2 4.3 0l7.1-7.1c2-2 2-5.1 0-7.1s-5.1-2-7.1 0L6.3 11.1c-2.7 2.7-2.7 7.1 0 9.9s7.1 2.7 9.9 0l5.3-5.3"
+            stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+  </div>
+</div>
+
+@if (showUploadModal) {
+  <div class="embed-modal-backdrop" (click)="closeUploadModal()">
+    <div class="embed-modal-card" (click)="$event.stopPropagation()">
+      <h3>Attach file</h3>
+
+      <input type="file" (change)="onFileSelected($event)" />
+
+      <textarea [(ngModel)]="modalPrompt" placeholder="Your question about the document…"></textarea>
+
+      <div class="embed-modal-actions">
+        <button type="button" class="embed-btn-cancel" (click)="closeUploadModal()">Cancel</button>
+        <button type="button" class="embed-btn-send" (click)="uploadAndSend()">Send</button>
+      </div>
+    </div>
+  </div>
+}

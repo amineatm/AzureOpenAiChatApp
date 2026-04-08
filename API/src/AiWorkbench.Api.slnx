@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AiWorkbench.Api/AiWorkbench.Api.csproj" />
+  <Project Path="AiWorkbench.Application/AiWorkbench.Application.csproj" />
+  <Project Path="AiWorkbench.Domain/AiWorkbench.Domain.csproj" />
+  <Project Path="AiWorkbench.Infrastructure/AiWorkbench.Infrastructure.csproj" />
+</Solution>

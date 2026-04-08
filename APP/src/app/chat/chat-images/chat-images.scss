@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.msg-bubble.user {
+  background: linear-gradient(145deg, #8764b8 0%, #6b4fa5 100%);
+  border-color: color-mix(in srgb, var(--copilot-purple) 45%, transparent);
+  box-shadow:
+    0 4px 20px rgba(135, 100, 184, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.generated-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-top: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  animation: copilot-msg-in 0.45s var(--ease-out-expo) both;
+}
+
+.msg-bubble.ai {
+  max-width: min(85%, 44rem);
+}
+
+@media (max-width: 1023px) {
+  .msg-bubble.ai {
+    max-width: min(94%, 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .generated-image {
+    animation: none;
+  }
+}

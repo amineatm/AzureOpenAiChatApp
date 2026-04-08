@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #1a1b1e;
+  --bg-subtle: #222326;
+  --bg-light: #25262b;
+  --bg-lighter: #2e3038;
+  --bg-elevated: #32353d;
+  --surface-composer: #2d3038;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --text: #f3f3f3;
+  --text-light: #a19f9d;
+  --text-muted: #8a8886;
+
+  --accent: #0078d4;
+  --accent-hover: #1084e0;
+  --accent-glow: rgba(0, 120, 212, 0.35);
+  --copilot-purple: #8764b8;
+  --copilot-purple-soft: rgba(135, 100, 184, 0.22);
+  --radius: 12px;
+  --composer-radius: 28px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.18);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.28);
+  --shadow-composer: 0 2px 12px rgba(0, 0, 0, 0.22);
+  --shadow-composer-focus: 0 4px 24px rgba(0, 120, 212, 0.18);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html,
+body {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  font-family:
+    'Segoe UI Variable',
+    'Segoe UI',
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+app-root {
+  display: block;
+  min-height: 100dvh;
+}
+
+.glow {
+  box-shadow: 0 0 24px var(--accent-glow);
+}
+
+.card {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+pre[class*='language-'] {
+  background: var(--bg-subtle) !important;
+  padding: 12px !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--border) !important;
+  overflow-x: auto !important;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+code[class*='language-'] {
+  color: var(--text) !important;
+}
+
+@keyframes copilot-msg-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes copilot-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes copilot-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--text-light) 35%, transparent);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--text-light) 55%, transparent);
+}
+

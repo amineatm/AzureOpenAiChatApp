@@ -1,0 +1,48 @@
+<div class="auth-container">
+
+  <div class="auth-card">
+
+    <h2 class="auth-title">Create Account</h2>
+
+    <div class="auth-fields">
+
+      <input [(ngModel)]="name" placeholder="Name" class="auth-input" />
+      @if(nameInvalid){
+      <div class="text-red-500 text-sm -mt-2 mb-2">
+        Name must be 4–15 characters
+      </div>
+      }
+
+      <input [(ngModel)]="email" type="email" placeholder="Email" class="auth-input" />
+      @if(emailInvalid){
+      <div class="text-red-500 text-sm -mt-2 mb-2">
+        Enter a valid email address
+      </div>
+      }
+
+      <input [(ngModel)]="password" type="password" placeholder="Password" class="auth-input" />
+      @if(passwordInvalid){
+      <div class="text-red-500 text-sm -mt-2 mb-2">
+        Password must be 10–20 chars, include upper, lower, number, and special character
+      </div>
+      }
+
+      <input [(ngModel)]="confirmPassword" type="password" placeholder="Confirm Password" class="auth-input" />
+      @if(passwordMismatch){
+      <div class="text-red-500 text-sm -mt-2 mb-2">
+        Passwords do not match
+      </div>
+      }
+
+    </div>
+
+    <button (click)="register()" class="auth-button">Register</button>
+
+    <div class="auth-footer">
+      Already have an account?
+      <a routerLink="/login" class="auth-link">Login</a>
+    </div>
+
+  </div>
+
+</div>

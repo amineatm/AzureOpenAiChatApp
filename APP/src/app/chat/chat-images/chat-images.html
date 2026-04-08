@@ -1,0 +1,34 @@
+<div class="chat-wrapper">
+  <div class="chat-header">Images</div>
+
+  <div #messagesContainer class="chat-messages">
+    @for (msg of messages; track $index) {
+      <div class="msg-row" [ngClass]="msg.from">
+        <div class="msg-bubble" [ngClass]="msg.from">
+          <div class="msg-text-pre">{{ msg.text }}</div>
+
+          @if (msg.imageUrl) {
+            <img [src]="msg.imageUrl" class="generated-image" alt="Generated image" />
+          }
+
+          <div class="msg-meta">
+            {{ msg.createdAt | date: 'short' }}
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="chat-input-bar">
+    <div class="composer-surface">
+      <input
+        [(ngModel)]="input"
+        (keyup.enter)="send()"
+        placeholder="Describe an image to create…"
+        type="text"
+        autocomplete="off"
+      />
+      <button type="button" class="composer-send composer-send--text" (click)="send()">Create</button>
+    </div>
+  </div>
+</div>

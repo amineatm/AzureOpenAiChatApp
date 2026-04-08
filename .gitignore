@@ -1,0 +1,27 @@
+# --- Angular ---
+APP/node_modules/
+APP/dist/
+APP/.angular/
+APP/.vscode/
+APP/.env
+APP/src/environments/*.ts
+
+# --- .NET ---
+API/**/bin/
+API/**/obj/
+API/**/.vs/
+API/**/appsettings.Development.json
+API/**/appsettings.Local.json
+API/**/appsettings.*.json
+
+# --- OS / Editor ---
+*.user
+*.suo
+*.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

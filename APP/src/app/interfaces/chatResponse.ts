@@ -1,0 +1,3 @@
+interface ChatResponse {
+  response: string;
+}
