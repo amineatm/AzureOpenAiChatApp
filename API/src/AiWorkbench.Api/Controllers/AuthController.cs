@@ -2,6 +2,7 @@
 using AiWorkbench.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace AiWorkbench.Api.Controllers;
 
@@ -68,11 +69,14 @@ public class AuthController(IAuthService authService) : ControllerBase
     [Authorize]
     public async Task<IActionResult> RevokeSession(string token, CancellationToken ct)
     {
-        var userId = User.FindFirst("sub")?.Value;
+        var userId = User.FindFirstValue("sub");
         if (userId is null) return Unauthorized();
 
-        await authService.LogoutAsync(new RefreshTokenRequestDto { RefreshToken = token }, ct);
+        var success = await authService.RevokeSessionAsync(Guid.Parse(userId), token, ct);
+        if (!success) return Forbid(); // or NotFound()
+
         return Ok();
     }
+
 
 }

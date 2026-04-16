@@ -140,4 +140,18 @@ public class AuthService(IUserRepository users, IRefreshTokenRepository refreshT
                 IsActive = t.IsActive
             })];
     }
+
+    public async Task<bool> RevokeSessionAsync(Guid userId, string token, CancellationToken ct)
+    {
+        var existing = await refreshTokens.GetByTokenAsync(token, ct);
+        if (existing is null) return false;
+
+        if (existing.UserId != userId) return false;
+
+        existing.RevokedAt = DateTime.UtcNow;
+        await refreshTokens.UpdateAsync(existing, ct);
+
+        return true;
+    }
+
 }

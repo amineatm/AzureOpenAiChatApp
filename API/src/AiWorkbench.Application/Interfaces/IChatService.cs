@@ -1,6 +1,6 @@
 ﻿using AiWorkbench.Application.DTOs.Chat;
 
-namespace AiWorkbench.Application.Services.Interfaces
+namespace AiWorkbench.Application.Interfaces
 {
     public interface IChatService
     {

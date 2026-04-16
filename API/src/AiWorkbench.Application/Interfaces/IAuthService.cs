@@ -10,4 +10,5 @@ public interface IAuthService
     Task LogoutAsync(RefreshTokenRequestDto request, CancellationToken ct = default);
     Task LogoutAllAsync(Guid userId, CancellationToken ct = default);
     Task<List<SessionDto>> GetSessionsAsync(Guid userId, CancellationToken ct = default);
+    Task<bool> RevokeSessionAsync(Guid userId, string token, CancellationToken ct);
 }

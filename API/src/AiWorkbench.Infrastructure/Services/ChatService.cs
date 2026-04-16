@@ -1,6 +1,6 @@
 ﻿using AiWorkbench.Application.DTOs.Chat;
+using AiWorkbench.Application.Interfaces;
 using AiWorkbench.Application.Repositories;
-using AiWorkbench.Application.Services.Interfaces;
 using AiWorkbench.Domain.Entities;
 using AiWorkbench.Infrastructure.External;
 using OpenAI.Chat;

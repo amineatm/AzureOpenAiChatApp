@@ -13,8 +13,13 @@ import { AuthService } from '../../services/auth.service';
 export class Login {
   email = '';
   password = '';
+  showPassword = false;
 
   constructor(private auth: AuthService, private router: Router) {}
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
 
   async login() {
     const ok = await this.auth.login(this.email, this.password);

@@ -6,7 +6,20 @@
 
     <div class="auth-fields">
       <input [(ngModel)]="email" placeholder="Email" class="auth-input" />
-      <input [(ngModel)]="password" placeholder="Password" type="password" class="auth-input" />
+      <div class="password-field">
+        <input [(ngModel)]="password" placeholder="Password" [type]="showPassword ? 'text' : 'password'" class="auth-input" />
+        <button
+          type="button"
+          (click)="togglePasswordVisibility()"
+          class="toggle-password-btn"
+          [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+          [attr.title]="showPassword ? 'Hide password' : 'Show password'"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 5C6.8 5 2.36 8.24 1 12c1.36 3.76 5.8 7 11 7s9.64-3.24 11-7c-1.36-3.76-5.8-7-11-7Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-2.5A1.5 1.5 0 1 0 12 10a1.5 1.5 0 0 0 0 3Z" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <button (click)="login()" class="auth-button">Login</button>

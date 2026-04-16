@@ -15,6 +15,8 @@ export class Register {
   email = '';
   password = '';
   confirmPassword = '';
+  showPassword = false;
+  showConfirmPassword = false;
 
   nameInvalid = false;
   emailInvalid = false;
@@ -22,6 +24,14 @@ export class Register {
   passwordMismatch = false;
 
   constructor(private auth: AuthService, private router: Router) {}
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
+  toggleConfirmPasswordVisibility() {
+    this.showConfirmPassword = !this.showConfirmPassword;
+  }
 
   async register() {
     this.nameInvalid = this.name.length < 4 || this.name.length > 15;

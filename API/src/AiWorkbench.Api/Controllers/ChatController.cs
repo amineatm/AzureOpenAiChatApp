@@ -1,5 +1,5 @@
 ﻿using AiWorkbench.Application.DTOs.Chat;
-using AiWorkbench.Application.Services.Interfaces;
+using AiWorkbench.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
