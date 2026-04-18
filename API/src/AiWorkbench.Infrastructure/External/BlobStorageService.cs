@@ -1,5 +1,4 @@
 ﻿using AiWorkbench.Application.Configuration;
-using Azure.Storage;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Sas;
@@ -39,7 +38,8 @@ namespace AiWorkbench.Infrastructure.External
                 BlobContainerName = blobClient.BlobContainerName,
                 BlobName = blobClient.Name,
                 Resource = "b",
-                ExpiresOn = DateTime.UtcNow.AddDays(1)
+                StartsOn = DateTimeOffset.UtcNow.AddMinutes(-5), 
+                ExpiresOn = DateTimeOffset.UtcNow.AddDays(1)
             };
 
             sasBuilder.SetPermissions(BlobSasPermissions.Read);
